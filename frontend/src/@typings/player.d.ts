@@ -6,6 +6,9 @@ export interface IPlayer {
 }
 export interface IPlayerStore {
   loading: boolean;
+  adding: boolean;
+  deleting: boolean;
+  updating: boolean;
   players: IPlayer[];
   addPlayer: (p: string) => void;
   deletePlayer: (id: string) => void;

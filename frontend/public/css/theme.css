@@ -46,6 +46,7 @@
   --color-teal-700: rgb(2 201 151);
   --color-attention-300: rgb(251 140 0);
   --color-attention-500: rgb(245 124 0);
+  --color-attention-500-opacity: rgba(245, 124, 0, 0.1);
   --color-attention-700: rgb(239 108 0);
   --color-success-300: rgb(153 235 168);
   --color-success-500: rgb(83 221 108);
@@ -54,6 +55,7 @@
   --color-info-500: rgb(4 150 255);
   --color-info-700: rgb(3 105 178);
   --color-error-300: rgb(255 89 89);
+  --color-error-300-opacity: rgba(255, 89, 89, 0.1);
   --color-error-500: rgb(255 51 51);
   --color-error-700: rgb(178 36 36);
   --color-disabled-300: rgb(86 90 107);

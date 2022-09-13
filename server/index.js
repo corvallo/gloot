@@ -6,6 +6,9 @@ const app = express();
 /* Setup express middlewares */
 app.use(bodyParser.json());
 app.use(allowCorsMiddleware);
+// app.use((req, res, next) => {
+//   setTimeout(next, 5000);
+// });
 
 /* API */
 app.get("/players", getPlayers);
