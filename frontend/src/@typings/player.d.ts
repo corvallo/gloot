@@ -6,9 +6,6 @@ export interface IPlayer {
 }
 export interface IPlayerStore {
   loading: boolean;
-  adding: boolean;
-  deleting: boolean;
-  updating: boolean;
   players: IPlayer[];
   selectedPlayer: IPlayer | null;
   setSelectedPlayer: (p: IPlayer | null) => void;

@@ -4,9 +4,6 @@ import config from "../config";
 
 const usePlayersStore = create<IPlayerStore>((set) => ({
   loading: false,
-  adding: false,
-  deleting: false,
-  updating: false,
   players: [],
   selectedPlayer: null,
   setSelectedPlayer: (player) => set((state) => ({ ...state, selectedPlayer: player })),
@@ -25,7 +22,7 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
     }
   },
   addPlayer: async (player: string) => {
-    set((state) => ({ ...state, adding: true }));
+    set((state) => ({ ...state, loading: true }));
     try {
       const _player = await fetch(`http://127.0.0.1:7000/player`, {
         method: "POST",
@@ -39,15 +36,15 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
       set((state) => ({
         ...state,
         players: [...state.players, _player],
-        adding: false,
+        loading: false,
       }));
     } catch (e) {
-      set((state) => ({ ...state, adding: false }));
+      set((state) => ({ ...state, loading: false }));
     }
   },
 
   updatePlayer: async (id: string, name: string) => {
-    set((state) => ({ ...state, updating: true }));
+    set((state) => ({ ...state, loading: true }));
     try {
       const _updatedPlayer = await fetch(`${config.API_URL}player/${id}`, {
         method: "PUT",
@@ -60,15 +57,15 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
       set((state) => ({
         ...state,
         players: [...state.players.map((p) => (p.id === _updatedPlayer.id ? _updatedPlayer : p))],
-        updating: false,
+        loading: false,
       }));
     } catch (e) {
-      set((state) => ({ ...state, updating: false }));
+      set((state) => ({ ...state, loading: false }));
     }
   },
 
   deletePlayer: async (id: string) => {
-    set((state) => ({ ...state, deleting: true }));
+    set((state) => ({ ...state, loading: true }));
     try {
       const _deletedPlayer = await fetch(`${config.API_URL}/player/${id}`, {
         method: "DELETE",
@@ -80,10 +77,10 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
       set((state) => ({
         ...state,
         players: [...state.players.filter((p) => p.id !== _deletedPlayer.id)],
-        deleting: false,
+        loading: false,
       }));
     } catch (e) {
-      set((state) => ({ ...state, deleting: false }));
+      set((state) => ({ ...state, loading: false }));
     }
   },
 }));

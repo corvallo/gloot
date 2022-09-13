@@ -7,7 +7,7 @@ import Loader from "./Loader";
 import PlayerCard from "./PlayerCard";
 
 const PlayersList: React.FC<IWithChildren> = () => {
-  const { deleting, updating, adding, players, loading } = usePlayersStore((state) => state);
+  const { players, loading } = usePlayersStore((state) => state);
   const [size, setSize] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
   const ref = useRef<HTMLDivElement>(null);
 
@@ -30,8 +30,8 @@ const PlayersList: React.FC<IWithChildren> = () => {
   }, []);
 
   return (
-    <div className={`list ${loading ? "loading" : ""} ${adding || updating || deleting ? "disabled" : ""}`} ref={ref}>
-      {players && players.length > 0 && !loading && (
+    <div className={`list ${loading ? "loading" : ""} `} ref={ref}>
+      {players && players.length > 0 && (
         <FixedSizeGrid height={size.h} width={size.w} columnCount={1} columnWidth={size.w - 100} rowCount={players.length} rowHeight={250}>
           {(props) => <PlayerCard player={players[props.rowIndex]} {...props} />}
         </FixedSizeGrid>

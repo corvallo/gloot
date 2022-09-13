@@ -147,14 +147,6 @@ input {
   align-items: center;
 }
 
-.list.disabled .item {
-  pointer-events: none;
-}
-
-.list.disabled .item button {
-  opacity: 0.5;
-}
-
 .list .item-container {
   display: flex;
   justify-content: center;

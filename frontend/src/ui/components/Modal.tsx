@@ -5,7 +5,7 @@ import Input from "./Input";
 
 const Modal: React.FC = () => {
   const { isOpen, close, closing, modalType } = useModalStore((state) => state);
-  const { selectedPlayer, setSelectedPlayer, deletePlayer, addPlayer, updatePlayer } = usePlayersStore((state) => state);
+  const { loading, selectedPlayer, setSelectedPlayer, deletePlayer, addPlayer, updatePlayer } = usePlayersStore((state) => state);
   return isOpen ? (
     <>
       <div className={`modal ${closing ? "closing" : ""}`}>
@@ -35,7 +35,7 @@ const Modal: React.FC = () => {
               {modalType !== "delete" && <Input defaultValue={selectedPlayer ? selectedPlayer.name : null} />}
             </div>
             <div className="modal-actions">
-              <button className="outline edit" type="submit">
+              <button className="outline edit" type="submit" disabled={loading}>
                 {`${capitalize(modalType)}`} Player
               </button>
               <button
