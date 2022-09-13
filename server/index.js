@@ -47,7 +47,6 @@ function getPlayer(req, res) {
  * Body: { "name": "Fresh Prince" } */
 function addPlayer(req, res) {
   const name = req.body.name;
-  console.log(req.body);
   if (!name) {
     return res.status(401).end();
   }

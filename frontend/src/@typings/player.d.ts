@@ -10,7 +10,10 @@ export interface IPlayerStore {
   deleting: boolean;
   updating: boolean;
   players: IPlayer[];
+  selectedPlayer: IPlayer | null;
+  setSelectedPlayer: (p: IPlayer | null) => void;
   addPlayer: (p: string) => void;
+  updatePlayer: (id: string, name: string) => void;
   deletePlayer: (id: string) => void;
   fetchPlayers: () => void;
 }

@@ -7,6 +7,8 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
   deleting: false,
   updating: false,
   players: [],
+  selectedPlayer: null,
+  setSelectedPlayer: (player) => set((state) => ({ ...state, selectedPlayer: player })),
   fetchPlayers: async () => {
     set((state) => ({ ...state, loading: true }));
     try {
@@ -40,6 +42,27 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
       }));
     } catch (e) {
       set((state) => ({ ...state, adding: false }));
+    }
+  },
+
+  updatePlayer: async (id: string, name: string) => {
+    set((state) => ({ ...state, updating: true }));
+    try {
+      const _updatedPlayer = await fetch(`http://localhost:7000/player/${id}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name }),
+      }).then((r) => r.json());
+      set((state) => ({
+        ...state,
+        players: [...state.players.map((p) => (p.id === _updatedPlayer.id ? _updatedPlayer : p))],
+        updating: false,
+      }));
+    } catch (e) {
+      set((state) => ({ ...state, updating: false }));
     }
   },
 

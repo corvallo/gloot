@@ -3,7 +3,7 @@ import useModalStore from "../../store/modal";
 import usePlayersStore from "../../store/players";
 
 const PlayerCard: React.FC<IPlayerCard> = ({ style, player }) => {
-  const { deletePlayer } = usePlayersStore((state) => state);
+  const { setSelectedPlayer } = usePlayersStore((state) => state);
   const { open } = useModalStore((state) => state);
   return (
     <div className="item-container" style={{ ...style, width: "99%" }}>
@@ -13,10 +13,22 @@ const PlayerCard: React.FC<IPlayerCard> = ({ style, player }) => {
         </div>
         <h2>{player.name}</h2>
         <div className="actions">
-          <button className="outline edit" onClick={() => open("update")}>
+          <button
+            className="outline edit"
+            onClick={() => {
+              setSelectedPlayer(player);
+              open("update");
+            }}
+          >
             Edit
           </button>
-          <button className="outline delete" onClick={() => deletePlayer(player.id)}>
+          <button
+            className="outline delete"
+            onClick={() => {
+              setSelectedPlayer(player);
+              open("delete");
+            }}
+          >
             Delete
           </button>
         </div>

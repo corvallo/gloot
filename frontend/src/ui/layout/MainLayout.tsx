@@ -14,7 +14,7 @@ const MainLayout: React.FC = () => {
         </main>
         <Footer />
       </div>
-      <SnackBar />
+      {/* <SnackBar /> */}
       <Modal />
     </>
   );

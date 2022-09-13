@@ -1,9 +1,9 @@
 import create from "zustand";
 interface IModalStore {
-  modalType: "create" | "update";
+  modalType: "create" | "update" | "delete";
   isOpen: boolean;
   closing: boolean;
-  open: (type?: "create" | "update") => void;
+  open: (type?: "create" | "update" | "delete") => void;
   close: () => void;
   toggle: () => void;
 }
