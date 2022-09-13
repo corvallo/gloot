@@ -2,6 +2,7 @@ import PlayersList from "../components/PlayersList";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Modal from "../components/Modal";
+import SnackBar from "../components/Snackbar";
 
 const MainLayout: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const MainLayout: React.FC = () => {
         <Footer />
       </div>
       <Modal />
+      <SnackBar />
     </>
   );
 };
