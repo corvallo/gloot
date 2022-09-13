@@ -1,0 +1,177 @@
+@import "./css/theme.css";
+
+html {
+  font-family: var(--sans-font);
+}
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--color-ui-700);
+  font-size: var(--base-fontsize);
+  line-height: var(--line-height);
+  color: var(--color-white);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+.container header {
+  height: 60px;
+  display: flex;
+  background: var(--color-ui-900);
+  align-items: center;
+  justify-content: space-between;
+}
+.container header .header__logo {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: var(--color-white);
+}
+.container header .header__logo img {
+  height: 35px;
+}
+.container header .header__actions {
+  display: flex;
+  flex: 0.3;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+.container main {
+  flex: 1;
+  max-height: calc(100vh - 30px - 60px);
+  overflow: auto;
+  padding: 1rem 4rem;
+}
+
+.container footer {
+  flex-shrink: 0;
+  height: 60px;
+  background: var(--color-ui-900);
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.empty p {
+  color: white;
+  background-image: linear-gradient(45deg, var(--color-teal-500), var(--color-blue));
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.list {
+  display: block;
+  height: 100%;
+}
+.list .item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.list .item-container .item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 40%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  background: var(--color-ui-700);
+  background-clip: padding-box;
+  border-radius: 10px;
+  height: calc(250px - 20px);
+  padding: 20px;
+  font-size: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 20px 25px -5px var(--color-teal-500-opacity), 0 10px 10px -5px var(--color-teal-500-opacity);
+}
+
+.item::after {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  background: linear-gradient(45deg, var(--color-teal-500), var(--color-blue));
+  content: "";
+  z-index: -1;
+  border-radius: 10px;
+}
+
+.item .avatar {
+  border-radius: 100%;
+  width: 50px;
+  cursor: pointer;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 15px;
+  border: 1px solid white;
+  background: linear-gradient(45deg, var(--color-teal-500), var(--color-blue));
+  box-shadow: 0 20px 25px -5px var(--color-teal-500-opacity), 0 10px 10px -5px var(--color-teal-500-opacity);
+}
+
+.item .avatar span {
+  color: var(--color-ui-800);
+}
+.item .actions {
+  display: flex;
+  gap: 15px;
+}
+
+.item h2 {
+  color: white;
+  background-image: linear-gradient(45deg, var(--color-teal-500), var(--color-blue));
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+  color: var(--color-ui-800);
+  background: var(--color-interaction-500);
+  border: 1px solid var(--color-interaction-500);
+  border-radius: 6px;
+  box-shadow: 1px 1px 1px #000;
+  height: 40px;
+  font-weight: 600;
+}
+
+button.outline.delete {
+  border: 2px solid var(--color-error-300);
+  background: transparent;
+  color: var(--color-error-300);
+}
+button.outline.edit {
+  border: 2px solid var(--color-interaction-500);
+  background: transparent;
+  color: var(--color-interaction-500);
+}
