@@ -8,11 +8,11 @@ const Header: React.FC = () => {
   return (
     <header>
       <div className="header__logo">
-        <img src="https://res.cloudinary.com/gloot/image/upload/v1636647109/glootcom/v2-202111/gloot_logo.svg" />
+        <img aria-label="G:Loot" src="https://res.cloudinary.com/gloot/image/upload/v1636647109/glootcom/v2-202111/gloot_logo.svg" />
       </div>
       <div className="header__actions">
-        <button disabled={adding || updating || deleting} onClick={() => open()}>
-          Add New Player
+        <button type="button" role="button" disabled={adding || updating || deleting} onClick={() => open()} aria-label="Create new player">
+          Create New Player
         </button>
       </div>
     </header>

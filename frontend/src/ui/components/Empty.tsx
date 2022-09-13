@@ -5,7 +5,9 @@ const Empty: React.FC = () => {
   return (
     <div className="empty">
       <p>Players List is empty!</p>
-      <button onClick={() => open("create")}>Add New Player</button>
+      <button type="button" role="button" onClick={() => open("create")} aria-label="Create new player">
+        Create New Player
+      </button>
     </div>
   );
 };

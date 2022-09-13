@@ -1,12 +1,36 @@
-@import "./css/theme.css";
+:root {
+  /**FONTS**/
+  --sans-font: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Nimbus Sans L", Roboto, Noto, "Segoe UI", Arial, Helvetica, "Helvetica Neue",
+    sans-serif;
+  --mono-font: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  --base-fontsize: 1.15rem;
+  --header-scale: 1.25;
+  --line-height: 1.618;
+  /**COLORS**/
+  --color-text: #212121;
+  --color-white: rgb(255 255 255);
+  --color-black: rgb(0 0 0);
+  --color-black-opacity: rgba(0, 0, 0, 0.3);
+  --color-blue: rgb(0 225 255);
+  --color-bg: rgb(11 11 30);
+  --color-bg1: rgb(31 31 66);
+  --color-bg2: rgb(21 21 50);
+  --color-green: rgb(19 240 148);
+  --color-teal: rgb(20 247 190);
+  --color-teal-opacity: rgba(20, 247, 190, 0.1);
+  --color-orange: rgb(245 124 0);
+  --color-orange-opacity: rgba(245, 124, 0, 0.1);
+  --color-red: rgb(255 89 89);
+  --color-red-opacity: rgba(255, 89, 89, 0.1);
+}
 
 html {
   font-family: var(--sans-font);
 }
 body {
   margin: 0;
-  color: var(--text);
-  background: var(--color-ui-700);
+  color: var(--color-text);
+  background: var(--color-bg1);
   font-size: var(--base-fontsize);
   line-height: var(--line-height);
   color: var(--color-white);
@@ -15,11 +39,11 @@ body {
 button {
   padding: 5px 10px;
   cursor: pointer;
-  color: var(--color-ui-800);
-  background: var(--color-interaction-500);
-  border: 1px solid var(--color-interaction-500);
+  color: var(--color-bg2);
+  background: var(--color-green);
+  border: 1px solid var(--color-green);
   border-radius: 6px;
-  box-shadow: 1px 1px 1px #000;
+  box-shadow: 1px 1px 1px var(--color-black);
   height: 40px;
   font-weight: 600;
 }
@@ -28,18 +52,18 @@ button:disabled {
 }
 
 button.outline.delete {
-  border: 2px solid var(--color-error-300);
+  border: 2px solid var(--color-red);
   background: transparent;
-  color: var(--color-error-300);
+  color: var(--color-red);
 }
 button.outline.edit {
-  border: 2px solid var(--color-interaction-500);
+  border: 2px solid var(--color-green);
   background: transparent;
-  color: var(--color-interaction-500);
+  color: var(--color-green);
 }
 input {
   height: 30px;
-  border: 1px solid var(--color-teal-500);
+  border: 1px solid var(--color-teal);
   border-radius: 6px;
   outline: none;
   padding: 0 10px;
@@ -55,7 +79,7 @@ input {
 .container header {
   height: 60px;
   display: flex;
-  background: var(--color-ui-900);
+  background: var(--color-bg);
   align-items: center;
   justify-content: space-between;
 }
@@ -85,7 +109,7 @@ input {
 .container footer {
   flex-shrink: 0;
   height: 60px;
-  background: var(--color-ui-900);
+  background: var(--color-bg);
   font-size: 0.8rem;
   display: flex;
   justify-content: center;
@@ -101,7 +125,7 @@ input {
 }
 .empty p {
   color: var(--color-white);
-  background-image: linear-gradient(45deg, var(--color-teal-500), var(--color-blue));
+  background-image: linear-gradient(45deg, var(--color-teal), var(--color-blue));
   background-size: 100%;
   background-repeat: repeat;
   -webkit-background-clip: text;
@@ -144,9 +168,8 @@ input {
   align-items: center;
   position: relative;
   width: 80%;
-  cursor: pointer;
   border: 2px solid transparent;
-  background: var(--color-ui-700);
+  background: var(--color-bg1);
   background-clip: padding-box;
   border-radius: 10px;
   height: calc(250px - 20px);
@@ -154,7 +177,7 @@ input {
   font-size: 1rem;
   text-align: center;
   box-sizing: border-box;
-  box-shadow: 0 20px 25px -5px var(--color-teal-500-opacity), 0 10px 10px -5px var(--color-teal-500-opacity);
+  box-shadow: 0 20px 25px -5px var(--color-teal-opacity), 0 10px 10px -5px var(--color-teal-opacity);
 }
 
 .item::after {
@@ -163,7 +186,7 @@ input {
   bottom: -2px;
   left: -2px;
   right: -2px;
-  background: linear-gradient(45deg, var(--color-teal-500), var(--color-blue));
+  background: linear-gradient(45deg, var(--color-teal), var(--color-blue));
   content: "";
   z-index: -1;
   border-radius: 10px;
@@ -172,7 +195,6 @@ input {
 .item .avatar {
   border-radius: 100%;
   width: 50px;
-  cursor: pointer;
   height: 50px;
   display: flex;
   justify-content: center;
@@ -180,13 +202,13 @@ input {
   font-size: 1.2rem;
   font-weight: 600;
   margin: 0 15px;
-  border: 1px solid white;
-  background: linear-gradient(45deg, var(--color-teal-500), var(--color-blue));
-  box-shadow: 0 20px 25px -5px var(--color-teal-500-opacity), 0 10px 10px -5px var(--color-teal-500-opacity);
+  border: 1px solid var(--color-white);
+  background: linear-gradient(45deg, var(--color-teal), var(--color-blue));
+  box-shadow: 0 20px 25px -5px var(--color-teal-opacity), 0 10px 10px -5px var(--color-teal-opacity);
 }
 
 .item .avatar span {
-  color: var(--color-ui-800);
+  color: var(--color-bg2);
 }
 .item .actions {
   display: flex;
@@ -194,8 +216,8 @@ input {
 }
 
 .item h2 {
-  color: white;
-  background-image: linear-gradient(45deg, var(--color-teal-500), var(--color-blue));
+  color: var(--color-white);
+  background-image: linear-gradient(45deg, var(--color-teal), var(--color-blue));
   background-size: 100%;
   background-repeat: repeat;
   -webkit-background-clip: text;
@@ -214,8 +236,8 @@ input {
   display: block;
   min-height: 30px;
   width: fit-content;
-  color: white;
-  background-image: linear-gradient(45deg, var(--color-teal-500), var(--color-blue));
+  color: var(--color-white);
+  background-image: linear-gradient(45deg, var(--color-teal), var(--color-blue));
   background-size: 100%;
   background-repeat: repeat;
   -webkit-background-clip: text;
@@ -231,8 +253,8 @@ input {
   height: 64px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid var(--color-teal-500);
-  border-color: var(--color-teal-500) transparent var(--color-teal-500) transparent;
+  border: 6px solid var(--color-teal);
+  border-color: var(--color-teal) transparent var(--color-teal) transparent;
   animation: loaderAnimation 1.2s linear infinite;
 }
 @keyframes loaderAnimation {
@@ -261,20 +283,20 @@ input {
   z-index: 50;
 }
 .snackbar.success {
-  background: var(--color-teal-500);
-  border: 1px solid white;
-  box-shadow: 0 20px 25px -5px var(--color-teal-500-opacity), 0 10px 10px -5px var(--color-teal-500-opacity);
+  background: var(--color-teal);
+  border: 1px solid var(--color-white);
+  box-shadow: 0 20px 25px -5px var(--color-teal-opacity), 0 10px 10px -5px var(--color-teal-opacity);
 }
 .snackbar.error {
-  background: var(--color-error-300);
-  border: 1px solid white;
-  box-shadow: 0 20px 25px -5px var(--color-error-300-opacity), 0 10px 10px -5px var(--color-error-300-opacity);
+  background: var(--color-red);
+  border: 1px solid var(--color-white);
+  box-shadow: 0 20px 25px -5px var(--color-red-opacity), 0 10px 10px -5px var(--color-red-opacity);
 }
 
 .snackbar.warning {
-  background: var(--color-attention-500);
-  border: 1px solid white;
-  box-shadow: 0 20px 25px -5px var(--color-attention-500-opacity), 0 10px 10px -5px var(--color-attention-500-opacity);
+  background: var(--color-orange);
+  border: 1px solid var(--color-white);
+  box-shadow: 0 20px 25px -5px var(--color-orange-opacity), 0 10px 10px -5px var(--color-orange-opacity);
 }
 @keyframes open {
   0% {
@@ -315,17 +337,16 @@ input {
   z-index: 100;
   min-height: 200px;
   height: fit-content;
-  background: red;
   width: 30%;
   animation: open 0.2s ease-in-out forwards;
-  border: 2px solid var(--color-teal-500);
-  background: var(--color-ui-700);
+  border: 2px solid var(--color-teal);
+  background: var(--color-bg1);
   border-radius: 10px;
   padding: 10px;
   font-size: 1rem;
   text-align: center;
   box-sizing: border-box;
-  box-shadow: 0 20px 25px -5px var(--color-teal-500-opacity), 0 10px 10px -5px var(--color-teal-500-opacity);
+  box-shadow: 0 20px 25px -5px var(--color-teal-opacity), 0 10px 10px -5px var(--color-teal-opacity);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -348,6 +369,6 @@ input {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--color-black-opacity);
   z-index: 90;
 }
