@@ -347,6 +347,8 @@ input {
   text-align: center;
   box-sizing: border-box;
   box-shadow: 0 20px 25px -5px var(--color-teal-opacity), 0 10px 10px -5px var(--color-teal-opacity);
+}
+.modal form {
   display: flex;
   flex-direction: column;
   gap: 10px;

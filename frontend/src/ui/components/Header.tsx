@@ -3,7 +3,7 @@ import useModalStore from "../../store/modal";
 import usePlayersStore from "../../store/players";
 
 const Header: React.FC = () => {
-  const { updating, deleting, adding, addPlayer } = usePlayersStore((state) => state);
+  const { updating, deleting, adding } = usePlayersStore((state) => state);
   const { open } = useModalStore((state) => state);
   return (
     <header>

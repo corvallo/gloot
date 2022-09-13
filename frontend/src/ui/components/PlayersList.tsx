@@ -8,21 +8,31 @@ import PlayerCard from "./PlayerCard";
 
 const PlayersList: React.FC<IWithChildren> = () => {
   const { deleting, updating, adding, players, loading } = usePlayersStore((state) => state);
-  const [height, setHeight] = useState<number>(0);
-  const [w, setW] = useState<number>(0);
+  const [size, setSize] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (ref) {
-      setHeight(ref!.current!.clientHeight);
-      setW(ref!.current!.clientWidth);
+      setSize({
+        w: ref?.current?.clientWidth || 0,
+        h: ref?.current?.clientHeight || 0,
+      });
     }
-  });
+    const handleResize = () => {
+      setSize({
+        w: ref?.current?.clientWidth || 0,
+        h: ref?.current?.clientHeight || 0,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className={`list ${loading ? "loading" : ""} ${adding || updating || deleting ? "disabled" : ""}`} ref={ref}>
       {players && players.length > 0 && !loading && (
-        <FixedSizeGrid height={height} width={w} columnCount={1} columnWidth={w - 100} rowCount={players.length} rowHeight={250}>
+        <FixedSizeGrid height={size.h} width={size.w} columnCount={1} columnWidth={size.w - 100} rowCount={players.length} rowHeight={250}>
           {(props) => <PlayerCard player={players[props.rowIndex]} {...props} />}
         </FixedSizeGrid>
       )}

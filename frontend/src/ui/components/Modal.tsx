@@ -20,7 +20,7 @@ const Modal: React.FC = () => {
                   name: { value: string };
                 };
 
-                modalType === "create" ? addPlayer(target.name.value) : updatePlayer(selectedPlayer!.id, target.name.value);
+                modalType === "create" ? addPlayer(target.name.value) : updatePlayer(selectedPlayer?.id as string, target.name.value);
               }
             }}
           >
@@ -28,7 +28,7 @@ const Modal: React.FC = () => {
             <div className="modal-content">
               {modalType === "delete" && (
                 <>
-                  <p>Player {selectedPlayer!.name} will be deleted.</p>
+                  <p>Player {selectedPlayer?.name} will be deleted.</p>
                   <p>Are you sure?</p>
                 </>
               )}

@@ -1,7 +1,6 @@
 import PlayersList from "../components/PlayersList";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import SnackBar from "../components/Snackbar";
 import Modal from "../components/Modal";
 
 const MainLayout: React.FC = () => {
@@ -14,7 +13,6 @@ const MainLayout: React.FC = () => {
         </main>
         <Footer />
       </div>
-      {/* <SnackBar /> */}
       <Modal />
     </>
   );

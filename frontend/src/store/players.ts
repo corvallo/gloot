@@ -1,5 +1,6 @@
 import create from "zustand";
 import { IPlayerStore } from "../@typings/player";
+import config from "../config";
 
 const usePlayersStore = create<IPlayerStore>((set) => ({
   loading: false,
@@ -48,7 +49,7 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
   updatePlayer: async (id: string, name: string) => {
     set((state) => ({ ...state, updating: true }));
     try {
-      const _updatedPlayer = await fetch(`http://localhost:7000/player/${id}`, {
+      const _updatedPlayer = await fetch(`${config.API_URL}player/${id}`, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -69,7 +70,7 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
   deletePlayer: async (id: string) => {
     set((state) => ({ ...state, deleting: true }));
     try {
-      const _deletedPlayer = await fetch(`http://localhost:7000/player/${id}`, {
+      const _deletedPlayer = await fetch(`${config.API_URL}/player/${id}`, {
         method: "DELETE",
         headers: {
           Accept: "application/json",
