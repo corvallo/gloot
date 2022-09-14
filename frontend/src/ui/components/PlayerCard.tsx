@@ -14,6 +14,8 @@ const PlayerCard: React.FC<IPlayerCard> = ({ style, player }) => {
         <h2>{player.name}</h2>
         <div className="actions">
           <button
+            title={`Edit player ${player.name}`}
+            aria-label={`Edit player ${player.name}`}
             className="outline edit"
             disabled={loading}
             onClick={() => {
@@ -24,6 +26,8 @@ const PlayerCard: React.FC<IPlayerCard> = ({ style, player }) => {
             Edit
           </button>
           <button
+            title={`Delete player ${player.name}`}
+            aria-label={`Delete player ${player.name}`}
             className="outline delete"
             disabled={loading}
             onClick={() => {

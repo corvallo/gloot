@@ -8,7 +8,7 @@ const HeaderActions: React.FC = () => {
 
   return (
     <div className="header__actions">
-      <button type="button" role="button" disabled={loading} onClick={() => open()} aria-label="Create new player">
+      <button type="button" role="button" disabled={loading} onClick={() => open()} aria-label="Create new player" title="Create new player">
         Create New Player
       </button>
     </div>
