@@ -1,6 +1,7 @@
 import create from "zustand";
 import { IPlayerStore } from "../@typings/player";
 import config from "../config";
+import useModalStore from "./modal";
 import useNotificationStore from "./notifications";
 
 const usePlayersStore = create<IPlayerStore>((set) => ({
@@ -39,6 +40,7 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
         players: [...state.players, _player],
         loading: false,
       }));
+      useModalStore.getState().close();
       useNotificationStore.setState({
         message: `Player successfully created`,
         type: "success",
@@ -46,6 +48,7 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
       });
     } catch (e) {
       set((state) => ({ ...state, loading: false }));
+      useModalStore.getState().close();
       useNotificationStore.setState({
         message: `There was an error creating the player`,
         type: "error",
@@ -70,6 +73,7 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
         players: [...state.players.map((p) => (p.id === _updatedPlayer.id ? _updatedPlayer : p))],
         loading: false,
       }));
+      useModalStore.getState().close();
       useNotificationStore.setState({
         message: `Player successfully updated`,
         type: "success",
@@ -77,6 +81,7 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
       });
     } catch (e) {
       set((state) => ({ ...state, loading: false }));
+      useModalStore.getState().close();
       useNotificationStore.setState({
         message: `There was an error updating the player`,
         type: "error",
@@ -100,6 +105,7 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
         players: [...state.players.filter((p) => p.id !== _deletedPlayer.id)],
         loading: false,
       }));
+      useModalStore.getState().close();
       useNotificationStore.setState({
         message: `Player successfully deleted`,
         type: "success",
@@ -107,6 +113,7 @@ const usePlayersStore = create<IPlayerStore>((set) => ({
       });
     } catch (e) {
       set((state) => ({ ...state, loading: false }));
+      useModalStore.getState().close();
       useNotificationStore.setState({
         message: `There was an error deleting the player`,
         type: "error",

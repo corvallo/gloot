@@ -4,7 +4,7 @@ import usePlayersStore from "../../store/players";
 
 const HeaderActions: React.FC = () => {
   const { loading } = usePlayersStore((state) => state);
-  const { open } = useModalStore((state) => state);
+  const open = useModalStore((state) => state.open);
 
   return (
     <div className="header__actions">

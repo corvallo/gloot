@@ -1,6 +1,6 @@
-import { useRef, useState, useEffect } from "react";
 import { FixedSizeGrid } from "react-window";
 import { IWithChildren } from "../../@typings/children";
+import useElementSize from "../../hooks/useElementSize";
 import usePlayersStore from "../../store/players";
 import Empty from "./Empty";
 import Loader from "./Loader";
@@ -8,31 +8,11 @@ import PlayerCard from "./PlayerCard";
 
 const PlayersList: React.FC<IWithChildren> = () => {
   const { players, loading } = usePlayersStore((state) => state);
-  const [size, setSize] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (ref) {
-      setSize({
-        w: ref?.current?.clientWidth || 0,
-        h: ref?.current?.clientHeight || 0,
-      });
-    }
-    const handleResize = () => {
-      setSize({
-        w: ref?.current?.clientWidth || 0,
-        h: ref?.current?.clientHeight || 0,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+  const [ref, { width, height }] = useElementSize();
   return (
-    <div className={`list ${loading ? "loading" : ""} `} ref={ref}>
+    <div className={`list ${loading ? "loading" : ""} `} ref={ref as React.MutableRefObject<HTMLDivElement>}>
       {players && players.length > 0 && (
-        <FixedSizeGrid height={size.h} width={size.w} columnCount={1} columnWidth={size.w - 100} rowCount={players.length} rowHeight={250}>
+        <FixedSizeGrid height={height} width={width} columnCount={1} columnWidth={width} rowCount={players.length} rowHeight={250}>
           {(props) => <PlayerCard player={players[props.rowIndex]} {...props} />}
         </FixedSizeGrid>
       )}
