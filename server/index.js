@@ -18,7 +18,7 @@ app.post("/player", addPlayer);
 app.delete("/player/:id", deletePlayer);
 
 /* Start server */
-app.listen(7000, () => console.log("app listening on port 7000."));
+app.listen(3000, () => console.log("app listening on port 3000."));
 
 /* The mock 'database' */
 let players = [
