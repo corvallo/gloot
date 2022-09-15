@@ -24,9 +24,13 @@ Project is composed of two folder.
 ### Technical choices
 
 Since is a small project, I decided to not use complex tool or libraries.
+
 Project was initialized using Vite [https://vitejs.dev/guide/], and it is made with React.
+
 I used Zustand to manage the state, which is a small library compared to redux for example ( [https://bundlephobia.com/package/zustand@4.1.1]). Infos about the library can be found here [https://docs.pmnd.rs/zustand/getting-started/introduction].
-To increase the efficency of the list list of the players, I introduced another small library (react-window [https://github.com/bvaughn/react-window]). The assumption I made is that the list can increase its size drastically, so to avoid performance issues I used this library.
+
+To increase the efficency of the list list of the players,  I introduced another small library (react-window [https://github.com/bvaughn/react-window]). The assumption I made is that the list can increase its size drastically, so to avoid performance issues I used this library.
+
 For the sake of the semplicity I didn't used any UI component libraries or css libraries, I preferred to create my own css.
 
 On server side I just added a rule to the cors middleware, because delete method was causing CORS problems
